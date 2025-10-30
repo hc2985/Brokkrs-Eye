@@ -167,7 +167,7 @@ docker run -p 8000:8000 brokkrs-eye
 
 ## License
 
-Part of the MjolnirNN research project.
+Part of the Project Mjolnir research.
 
 ## Version
 
