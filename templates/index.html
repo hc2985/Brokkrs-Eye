@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brokkr's Eye - IMU Data Processor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/assets/MjolnirLogo.PNG" alt="Mjolnir Logo" class="logo">
+            <h1>Brokkr's Eye</h1>
+            <p class="subtitle">IMU Data Processing</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <h2>Upload CSV File</h2>
+                    <p>Drop your IMU data file here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".csv" hidden>
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                        Select File
+                    </button>
+                </div>
+
+                <div id="fileInfo" class="file-info" style="display: none;">
+                    <div class="file-details">
+                        <span class="file-name" id="fileName"></span>
+                        <span class="file-size" id="fileSize"></span>
+                    </div>
+                    <button class="btn-secondary" onclick="clearFile()">Change File</button>
+                </div>
+            </div>
+
+            <div class="action-section" id="actionSection" style="display: none;">
+                <button class="btn-process" id="processBtn" onclick="processFile()">
+                    Process Data
+                </button>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="spinner"></div>
+                <p id="statusText">Processing your data...</p>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Processing Complete!</h3>
+                <p id="resultMessage"></p>
+                <button class="btn-download" id="downloadBtn">
+                    Download Processed File
+                </button>
+                <button class="btn-secondary" onclick="reset()">
+                    Process Another File
+                </button>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-icon">✗</div>
+                <h3>Processing Failed</h3>
+                <p id="errorMessage"></p>
+                <button class="btn-secondary" onclick="reset()">
+                    Try Again
+                </button>
+            </div>
+
+            <div class="info-section">
+                <h3>Input File Requirements</h3>
+                <div class="requirements">
+                    <div class="requirement">
+                        <strong>Format:</strong> CSV file
+                    </div>
+                    <div class="requirement">
+                        <strong>Required Columns:</strong>
+                        <ul>
+                            <li>Timestamp, Milliseconds</li>
+                            <li>LinLeft, LinRight</li>
+                            <li>AccX, AccY, AccZ</li>
+                            <li>GyroX, GyroY, GyroZ</li>
+                        </ul>
+                    </div>
+                    <div class="requirement">
+                        <strong>Output:</strong> Original data + yaw rate classifications
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by <a href="https://github.com/Armanasq/End-to-End-Deep-Learning-Framework-for-Real-Time-Inertial-Attitude-Estimation-using-6DoF-IMU" target="_blank">Deep Learning Framework for Real-Time Attitude Estimation</a></p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
