@@ -30,9 +30,9 @@ header {
 }
 
 .logo {
-    max-width: 120px;
+    max-width: 80px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 header h1 {
